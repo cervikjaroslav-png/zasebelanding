@@ -37,7 +37,7 @@ body {
   top: -100%;
   left: 50%;
   transform: translateX(-50%);
-  background: #C9A84C;
+  background: #c9a84c;
   color: #080808;
   padding: 10px 24px;
   z-index: 999;
@@ -473,7 +473,8 @@ header.scrolled {
   justify-content: center;
   flex-direction: column;
   gap: 0;
-  animation: introFade 0.8s 3s ease forwards; pointer-events: none;
+  animation: introFade 1s 3.2s ease forwards;
+  pointer-events: none;
 }
 .intro-z {
   position: relative;
@@ -485,91 +486,68 @@ header.scrolled {
   height: auto;
   visibility: hidden;
 }
+/* Single logo — smooth fade-in with subtle scale */
 .intro-piece {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0;
+  transform: scale(0.92);
+  animation: logoReveal 1.6s 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 .intro-piece img {
   width: 100%; height: 100%;
   object-fit: contain;
 }
-.intro-piece-1 {
-  clip-path: polygon(0 0, 33.34% 0, 33.34% 100%, 0 100%);
-  animation: pieceFromLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.intro-piece-2 {
-  clip-path: polygon(33.33% 0, 66.67% 0, 66.67% 100%, 33.33% 100%);
-  animation: pieceFromBottom 1.2s 0.15s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-.intro-piece-3 {
-  clip-path: polygon(66.66% 0, 100% 0, 100% 100%, 66.66% 100%);
-  animation: pieceFromRight 1.2s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
+/* Only show the first piece as full logo, hide clip-path pieces */
+.intro-piece-1 { clip-path: none; }
+.intro-piece-2 { display: none; }
+.intro-piece-3 { display: none; }
 
-/* Golden glow flash after assembly */
+/* Subtle golden glow after logo appears */
 .intro-z::after {
   content: '';
   position: absolute;
-  inset: -30%;
-  background: radial-gradient(circle, rgba(201,168,76,0.3) 0%, transparent 65%);
+  inset: -20%;
+  background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 60%);
   opacity: 0;
-  animation: glowFlash 0.9s 1.3s ease both;
+  animation: glowSoft 1.8s 1.2s ease both;
   pointer-events: none;
 }
 
-@keyframes pieceFromLeft {
-  0% { transform: translateX(-120px) rotate(-12deg); opacity: 0; filter: brightness(0.2); }
+@keyframes logoReveal {
+  0% { opacity: 0; transform: scale(0.92); filter: brightness(0.4); }
+  60% { opacity: 1; filter: brightness(1); }
+  100% { opacity: 1; transform: scale(1); filter: brightness(1); }
+}
+@keyframes glowSoft {
+  0% { opacity: 0; }
   40% { opacity: 1; }
-  100% { transform: translateX(0) rotate(0); opacity: 1; filter: brightness(1); }
+  100% { opacity: 0; }
 }
-@keyframes pieceFromBottom {
-  0% { transform: translateY(100px) scale(0.85); opacity: 0; filter: brightness(0.2); }
-  40% { opacity: 1; }
-  100% { transform: translateY(0) scale(1); opacity: 1; filter: brightness(1); }
-}
-@keyframes pieceFromRight {
-  0% { transform: translateX(120px) rotate(12deg); opacity: 0; filter: brightness(0.2); }
-  40% { opacity: 1; }
-  100% { transform: translateX(0) rotate(0); opacity: 1; filter: brightness(1); }
-}
-@keyframes glowFlash {
-  0% { opacity: 0; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1.2); }
-}
-.intro-word {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 48px;
-  font-weight: 300;
-  letter-spacing: 20px;
-  color: #C9A84C;
-  text-transform: uppercase;
-  animation: introWord 1s 0.5s ease both;
-}
+
 .intro-line {
   width: 0; height: 1px;
-  background: rgba(201,168,76,0.5);
-  margin-top: 6px;
-  animation: introLine 0.8s 1.6s ease forwards;
+  background: linear-gradient(to right, transparent, rgba(201,168,76,0.6), transparent);
+  margin-top: 10px;
+  animation: introLine 1s 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 .intro-sub {
   font-size: 11px; letter-spacing: 6px;
   text-transform: uppercase;
-  color: rgba(201,168,76,0.6);
-  margin-top: 10px;
+  color: rgba(201,168,76,0.7);
+  margin-top: 14px;
   opacity: 0;
-  animation: introFadeIn 0.6s 2s ease forwards;
+  animation: introFadeIn 0.8s 2.2s ease forwards;
 }
 
 @keyframes introFade {
   to { opacity: 0; pointer-events: none; }
 }
-@keyframes introWord {
-  from { opacity: 0; letter-spacing: 30px; }
-  to { opacity: 1; letter-spacing: 20px; }
-}
 @keyframes introLine {
-  to { width: 200px; }
+  to { width: 180px; }
+}
+@keyframes introFadeIn {
+  to { opacity: 1; }
 }
 @keyframes introFadeIn {
   to { opacity: 1; }
@@ -770,23 +748,6 @@ header.scrolled {
   /* Intro overlay — responzivní */
   .intro-overlay { padding: 0 20px !important; }
   .intro-base-logo { width: min(80vw, 400px) !important; }
-
-  /* Menší vzdálenosti pro mobilní intro animaci */
-  @keyframes pieceFromLeft {
-    0% { transform: translateX(-60px) rotate(-8deg); opacity: 0; filter: brightness(0.2); }
-    40% { opacity: 1; }
-    100% { transform: translateX(0) rotate(0); opacity: 1; filter: brightness(1); }
-  }
-  @keyframes pieceFromBottom {
-    0% { transform: translateY(50px) scale(0.9); opacity: 0; filter: brightness(0.2); }
-    40% { opacity: 1; }
-    100% { transform: translateY(0) scale(1); opacity: 1; filter: brightness(1); }
-  }
-  @keyframes pieceFromRight {
-    0% { transform: translateX(60px) rotate(8deg); opacity: 0; filter: brightness(0.2); }
-    40% { opacity: 1; }
-    100% { transform: translateX(0) rotate(0); opacity: 1; filter: brightness(1); }
-  }
   .intro-sub { font-size: 9px !important; letter-spacing: 4px !important; }
 
   /* Layout — scrollovatelné, ne stísněné */
@@ -1032,10 +993,10 @@ header.scrolled {
 <!-- Intro overlay -->
 <div class="intro-overlay" id="intro" aria-hidden="true">
   <div class="intro-z">
-    <img class="intro-base-logo" src="ZASEBE OBECNE - LOGO.png" alt="Zasebe logo">
-    <div class="intro-piece intro-piece-1"><img src="ZASEBE OBECNE - LOGO.png" alt="" aria-hidden="true"></div>
-    <div class="intro-piece intro-piece-2"><img src="ZASEBE OBECNE - LOGO.png" alt="" aria-hidden="true"></div>
-    <div class="intro-piece intro-piece-3"><img src="ZASEBE OBECNE - LOGO.png" alt="" aria-hidden="true"></div>
+    <img class="intro-base-logo" src="LOGO ZASEBE - OBECNÉ.png" alt="Zasebe logo">
+    <div class="intro-piece intro-piece-1"><img src="LOGO ZASEBE - OBECNÉ.png" alt="" aria-hidden="true"></div>
+    <div class="intro-piece intro-piece-2"><img src="LOGO ZASEBE - OBECNÉ.png" alt="" aria-hidden="true"></div>
+    <div class="intro-piece intro-piece-3"><img src="LOGO ZASEBE - OBECNÉ.png" alt="" aria-hidden="true"></div>
   </div>
   <div class="intro-line"></div>
   <div class="intro-sub">Finance · Sport · Mind</div>
