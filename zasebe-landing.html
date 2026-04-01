@@ -482,7 +482,7 @@ header.scrolled {
   display: inline-block;
 }
 .intro-base-logo {
-  width: 900px;
+  width: 450px;
   height: auto;
   visibility: hidden;
 }
@@ -747,8 +747,18 @@ header.scrolled {
 
   /* Intro overlay — responzivní */
   .intro-overlay { padding: 0 20px !important; }
-  .intro-base-logo { width: min(80vw, 400px) !important; }
+  .intro-base-logo { width: min(70vw, 280px) !important; }
   .intro-sub { font-size: 9px !important; letter-spacing: 4px !important; }
+  .intro-piece {
+    position: absolute !important;
+    inset: 0 !important;
+    opacity: 0 !important;
+    transform: scale(0.92) !important;
+    animation: logoReveal 1.6s 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards !important;
+  }
+  .intro-piece-1 { clip-path: none !important; display: block !important; }
+  .intro-piece-2 { display: none !important; }
+  .intro-piece-3 { display: none !important; }
 
   /* Layout — scrollovatelné, ne stísněné */
   .landing {
