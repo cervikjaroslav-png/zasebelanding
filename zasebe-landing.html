@@ -450,10 +450,10 @@ header.scrolled {
   border-bottom: 1px solid rgba(201,168,76,0.08);
 }
 .header-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 3px;
   color: rgba(201,168,76,0.85);
   text-transform: uppercase;
   text-decoration: none;
@@ -627,53 +627,12 @@ header.scrolled {
   font-weight: 400;
 }
 
-/* CONTACT FOOTER */
-.contact-footer {
-  padding: 24px 40px 28px;
-  background: #080808;
-  border-top: 1px solid rgba(201,168,76,0.05);
-  text-align: center;
-}
-.contact-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(16px, 2vw, 22px);
-  font-weight: 400;
-  font-style: italic;
-  color: rgba(245,240,232,0.9);
-  margin-bottom: 14px;
-}
-.contact-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #C9A84C;
-  border: 1px solid rgba(201,168,76,0.4);
-  padding: 10px 24px;
-  border-radius: 0;
-  transition: all 0.3s;
-  background: transparent;
-  font-weight: 400;
-}
-.contact-btn:hover {
-  border-color: rgba(201,168,76,0.5);
-  color: #C9A84C;
-  background: rgba(201,168,76,0.04);
-}
-.copyright {
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(245,240,232,0.25);
-  margin-top: 20px;
-  transition: color 0.3s;
-}
-.copyright:hover {
-  color: rgba(245,240,232,0.4);
-}
+/* FOOTER */
+footer { background:#080808;padding:46px 40px;border-top:1px solid rgba(201,168,76,0.05);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px; }
+.fc { font-size:15px;color:rgba(240,237,232,.45); }
+.fl { display:flex;gap:22px; }
+.fl a { font-size:13px;color:rgba(240,237,232,.45);text-decoration:none;transition:color .3s; }
+.fl a:hover { color:#C9A84C; }
 
 /* Bottom bar */
 .bottom-bar {
@@ -743,7 +702,7 @@ header.scrolled {
     position: fixed !important;
     z-index: 100 !important;
   }
-  .header-logo { font-size: 13px !important; letter-spacing: 4px !important; }
+  .header-logo { font-size: 18px !important; letter-spacing: 3px !important; }
 
   /* Intro strip — elegantní nadpis */
   .intro-strip {
@@ -885,11 +844,6 @@ header.scrolled {
   .panel-cta:active .cta-arrow {
     background: rgba(201,168,76,0.15) !important;
   }
-  .contact-btn:active {
-    transform: scale(0.97);
-    background: rgba(201,168,76,0.06);
-  }
-
   /* Panel bg glow */
   .panel-bg { position: absolute !important; inset: 0 !important; border-radius: 12px !important; }
   .panel-noise { position: absolute !important; inset: 0 !important; border-radius: 12px !important; }
@@ -908,15 +862,7 @@ header.scrolled {
     height: 22px !important;
   }
 
-  .contact-footer {
-    padding: 18px 20px 22px !important;
-  }
-  .contact-btn {
-    font-size: 10px !important;
-    letter-spacing: 2px !important;
-    padding: 12px 20px !important;
-    min-height: 44px !important;
-  }
+  footer { padding:36px 22px !important;flex-direction:column !important;text-align:center !important; }
 
   /* Reveal — no animation on mobile, just show */
   .reveal {
@@ -1095,13 +1041,11 @@ header.scrolled {
 </section>
 
 <!-- KONTAKT -->
-<footer class="contact-footer reveal" role="contentinfo">
-  <p class="contact-title">Chcete vědět víc?</p>
-  <a href="mailto:zasebe@zasebe.com" class="contact-btn" aria-label="Napsat email na zasebe@zasebe.com">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
-    zasebe@zasebe.com
-  </a>
-  <p class="copyright">&copy; 2026 ZASEBE</p>
+<footer>
+  <div class="fc">&copy; 2026 ZASEBE. Všechna práva vyhrazena.</div>
+  <div class="fl">
+    <a href="mailto:zasebe@zasebe.com">zasebe@zasebe.com</a>
+  </div>
 </footer>
 </main>
 
